@@ -10,10 +10,12 @@ const getOptionsSupport = async(req, res) => {
         const data = await pool.query(
             `SELECT 
                 os.id_option_support,
-                os.name
+                os.name,
+                os.id_severity
             FROM "virtualChat".options_support as os 
             WHERE os.id_user='${admin}';`
         )
+        console.log(data.rows)
         res.json({
             status: 'success',
             message: 'successful',
